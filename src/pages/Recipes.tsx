@@ -29,13 +29,12 @@ const Recipes = () => {
     }) => {
         const { searchString, minRating, cuisine } = filters;
         const filtered = recipes.filter(recipe => {
-            if (searchString && 
-                (
-                    recipe.title.toLowerCase().includes(searchString.toLowerCase()) || 
-                    recipe.ingredients.join(' ').toLowerCase().includes(searchString.toLowerCase())
-                ) 
+            if (
+                    searchString && 
+                    !recipe.title.toLowerCase().includes(searchString.toLowerCase()) && 
+                    !recipe.ingredients.join(' ').toLowerCase().includes(searchString.toLowerCase())
             ){
-                return true;
+                return false;
             }
             if (minRating && recipe.rating < minRating) return false;
             if (cuisine && cuisine !== 'All' && recipe.cuisine !== cuisine) return false;
@@ -48,9 +47,7 @@ const Recipes = () => {
         <div className="bg-slate-100 p-10 justify-center">
             <h1 className="text-5xl font-bold text-rose-600  mb-4">Find your recipe</h1>
             <FilterBox onFilterChange={handleFilterChange} />
-            <div className='w-[75%]'>
-                <RecipeList recipes={filteredRecipes} />
-            </div>
+            <RecipeList recipes={filteredRecipes} />
         </div>
     );
 };

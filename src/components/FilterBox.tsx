@@ -6,7 +6,7 @@ interface FilterBoxProps {
     onFilterChange: (filters: { searchString: string, minRating: number, cuisine: string }) => void;
 }
 
-const cuisines = ['All', 'Italian', 'Mexican', 'Indian', 'Chinese', 'American'];
+const cuisines = ['All', 'Italian', 'Mexican', 'Indian', 'Chinese', 'American', 'British'];
 
 
 const FilterBox = ({onFilterChange}:FilterBoxProps) => {
@@ -56,7 +56,7 @@ const FilterBox = ({onFilterChange}:FilterBoxProps) => {
                 </select>
             </div>
             <div className="mb-2">
-                <label className="block text-gray-700 mb-1">Minimum rating:</label>
+                <label className="block text-gray-700 mb-1">Review ratings (instructions):</label>
                 <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
                             <FontAwesomeIcon
