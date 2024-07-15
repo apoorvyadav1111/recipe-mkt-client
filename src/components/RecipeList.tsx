@@ -32,9 +32,8 @@ const RecipeList = (
                             )}
                             <p className="text-black"><i>{recipe.cuisine}</i></p>
                             {recipe.ingredients.slice(0,5).map((ingredient, i) => (
-                                <button key={i} className="rounded-full bg-rose-400 px-2 mr-2 text-white text-sm">{ingredient}</button>
+                                <button key={i} className="rounded-full bg-rose-600 px-2 mr-2 text-white text-sm">{ingredient}</button>
                             ))}
-
                         </li>
                     </div>
                 </Link>

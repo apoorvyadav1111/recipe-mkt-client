@@ -56,7 +56,7 @@ const FilterBox = ({onFilterChange}:FilterBoxProps) => {
                 </select>
             </div>
             <div className="mb-2">
-                <label className="block text-gray-700 mb-1">Review ratings (instructions):</label>
+                <label className="block text-gray-700 mb-1">recipe instruction ratings (minimum):</label>
                 <div className="flex">
                         {[1, 2, 3, 4, 5].map((star) => (
                             <FontAwesomeIcon
