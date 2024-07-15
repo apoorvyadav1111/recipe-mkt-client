@@ -1,26 +1,23 @@
+// src/App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, useLocation} from 'react-router-dom';
+import Home from './pages/Home';
+import Recipes from './pages/Recipes';
+import RecipeDetail from './pages/RecipeDetail';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+    const location = useLocation();
+
+    return (
+        <div className="App">
+            <Routes location={location} key={location.pathname}>
+                <Route  path="/" element ={<Home/>} />
+                <Route  path="/recipes" element={<Recipes/>} />
+                <Route path="/recipes/:id" element={<RecipeDetail/>} />
+            </Routes>
+        </div>
+    );
+};
 
 export default App;
