@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import RecipeList from '../components/RecipeList';
 import FilterBox from '../components/FilterBox';
 import { Recipe } from '../interfaces/Recipe';
+import { getAllRecipes } from '../services/recipeService';
 
 const Recipes = () => {
     const [recipes, setRecipes] = useState([] as Recipe[]);
@@ -11,8 +12,7 @@ const Recipes = () => {
     useEffect(() => {
         const getRecipes = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/v1/recipes/');
-                const data = await response.json();
+                const data = await getAllRecipes();
                 setRecipes(data);
                 setFilteredRecipes(data);
             } catch (error) {

@@ -3,15 +3,22 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import RecipeDetail from '../components/RecipeDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getRecipeDetail } from '../services/recipeService';
 
 const Recipe = () => {
-    const { id } = useParams<{ id: string }>();
+    const { id } = useParams<{ id: string}>();
     const [recipe, setRecipe] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/v1/recipes/${id}`)
-            .then(response => response.json())
-            .then(data => setRecipe(data));
+        const getRecipe = async () => {
+            try {
+                const data = await getRecipeDetail(id??'');
+                setRecipe(data);
+            } catch (error) {
+                console.error('Error fetching recipe:', error);
+            }
+        }
+        getRecipe();
     }, [id]);
 
     if (!recipe) return <p>Loading...</p>;
